@@ -65,9 +65,37 @@ function is_palindrome(s) {
     return true;
 }
 
-function is_balance(s){
-    
+function isBalance(s) {
+    s = s.toLowerCase().replace(/[^()]/g, "");
+    let count = 0
+    let stack = new Stack();
+    for (let i = 0; i < s.length; i++) {
+        stack.push(s[s.length-i-1]);
+    }
+    console.log(stack.display())
+    for (let i = 0; i < s.length; i++) {
+        if (stack.pop() === "(") {
+            count++
+            // console.log(count)
+        }
+        else {
+            count--
+            // console.log(count)
+            if (count < 0) {
+                return false
+            }
+        }
+    }
+    // console.log(count)
+    if (count !== 0) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
+
+console.log(isBalance('test()'))
 
 // True, true, true, false
 // console.log(is_palindrome("dad"));
