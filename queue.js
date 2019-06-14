@@ -10,10 +10,17 @@ class Queue {
         this.first = null;
         this.last = null;
     }
-    enqueue(data){
-
+    enqueue(item){
+        const node = new _Node(item, null);
+        if(this.first === null){
+            this.first = node
+        }
+        if(this.last){
+            this.last.next = node
+        }
+        this.last = node
     }
     dequeue(data){
-        
+
     }
 }
