@@ -1,5 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable strict */
+
+
 class _Node {
     constructor(data, next) {
         this.data = data;
@@ -15,7 +17,7 @@ class Stack {
         if (this.top === null) {
             this.top = new _Node(item, null);
         }
-        this.top = new _Node(item, this.top)
+        this.top = new _Node(item, this.top);
     }
     pop() {
         const node = this.top;
@@ -23,36 +25,36 @@ class Stack {
         return node.data;
     }
     peek() {
-        console.log(this.top.data)
+        console.log(this.top.data);
     }
     isEmpty() {
-        return (this.head === null) ? true : false
+        return (this.head === null) ? true : false;
     }
     display() {
-        let currNode = this.top
-        let res = ""
+        let currNode = this.top;
+        let res = '';
         while (currNode.next !== null) {
-            res += `${currNode.data} -> `
-            currNode = currNode.next
+            res += `${currNode.data} -> `;
+            currNode = currNode.next;
         }
-        console.log(res)
-        return res
+        console.log(res);
+        return res;
     }
 }
 
 function main() {
-    let st = new Stack()
+    let st = new Stack();
 
-    st.push('test1')
-    st.push('test2')
-    st.push('test3')
-    st.display()
-    st.peek()
+    st.push('test1');
+    st.push('test2');
+    st.push('test3');
+    st.display();
+    st.peek();
 }
 main();
 
 function is_palindrome(s) {
-    s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+    s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
     let stack = new Stack();
     for (let i = 0; i < s.length; i++) {
         stack.push(s[i]);
@@ -66,23 +68,23 @@ function is_palindrome(s) {
 }
 
 function isBalance(s) {
-    s = s.toLowerCase().replace(/[^()]/g, "");
-    let count = 0
+    s = s.toLowerCase().replace(/[^()]/g, '');
+    let count = 0;
     let stack = new Stack();
     for (let i = 0; i < s.length; i++) {
         stack.push(s[s.length-i-1]);
     }
-    console.log(stack.display())
+    console.log(stack.display());
     for (let i = 0; i < s.length; i++) {
-        if (stack.pop() === "(") {
-            count++
+        if (stack.pop() === '(') {
+            count++;
             // console.log(count)
         }
         else {
-            count--
+            count--;
             // console.log(count)
             if (count < 0) {
-                return false
+                return false;
             }
         }
     }
@@ -95,7 +97,7 @@ function isBalance(s) {
     }
 }
 
-console.log(isBalance('test()'))
+console.log(isBalance('test()'));
 
 // True, true, true, false
 // console.log(is_palindrome("dad"));
@@ -103,3 +105,4 @@ console.log(isBalance('test()'))
 // console.log(is_palindrome("1001"));
 // console.log(is_palindrome("Tauhida"));
 
+module.exports = Stack;
